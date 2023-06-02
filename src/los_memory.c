@@ -212,7 +212,6 @@ struct OsMemPoolHead {
 
 STATIC INLINE VOID OsMemFreeNodeAdd(VOID *pool, struct OsMemFreeNodeHead *node);
 STATIC INLINE UINT32 OsMemFree(struct OsMemPoolHead *pool, struct OsMemNodeHead *node);
-STATIC VOID OsMemInfoPrint(VOID *pool);
 #ifdef LOSCFG_BASE_MEM_NODE_INTEGRITY_CHECK
 STATIC INLINE UINT32 OsMemAllocCheck(struct OsMemPoolHead *pool);
 #endif
@@ -1353,7 +1352,7 @@ UINT32 LOS_MemInfoGet(VOID *pool, LOS_MEM_POOL_STATUS *poolStatus)
     return LOS_OK;
 }
 
-STATIC VOID OsMemInfoPrint(VOID *pool)
+VOID OsMemInfoPrint(VOID *pool)
 {
     struct OsMemPoolHead *poolInfo = (struct OsMemPoolHead *)pool;
     LOS_MEM_POOL_STATUS status = {0};
@@ -1367,7 +1366,7 @@ STATIC VOID OsMemInfoPrint(VOID *pool)
            "max free node size   used node num     free node num      UsageWaterLine\n");
     MEMORY_LOG("---------------    --------     -------       --------     "
            "--------------       -------------      ------------      ------------\n");
-    MEMORY_LOG("%-16p   0x%-8x   0x%-8x    0x%-8x   0x%-16x   0x%-13x    0x%-13x    0x%-13x\n",
+    MEMORY_LOG("%-16p   %-10u   %-10u    %-10u   %-18u   %-15u    %-15u    %-15u\n",
            poolInfo->info.pool, LOS_MemPoolSizeGet(pool), status.totalUsedSize,
            status.totalFreeSize, status.maxFreeNodeSize, status.usedNodeNum,
            status.freeNodeNum, status.usageWaterLine);
@@ -1376,7 +1375,7 @@ STATIC VOID OsMemInfoPrint(VOID *pool)
            "max free node size   used node num     free node num\n");
     MEMORY_LOG("---------------    --------     -------       --------     "
            "--------------       -------------      ------------\n");
-    MEMORY_LOG("%-16p   0x%-8x   0x%-8x    0x%-8x   0x%-16x   0x%-13x    0x%-13x\n",
+    MEMORY_LOG("%-16p   %-10u   %-10u    %-10u   %-18u   %-15u    %-15u\n",
            poolInfo->info.pool, LOS_MemPoolSizeGet(pool), status.totalUsedSize,
            status.totalFreeSize, status.maxFreeNodeSize, status.usedNodeNum,
            status.freeNodeNum);

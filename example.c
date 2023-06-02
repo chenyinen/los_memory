@@ -30,6 +30,6 @@ int main()
             p[num] = NULL;
         }
     }
-    printf("over\n");
+    OsMemInfoPrint((void*)buf);
     return 0;
 }

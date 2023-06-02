@@ -384,6 +384,8 @@ extern UINT32 LOS_MemFreeNodeShow(VOID *pool);
  */
 extern UINT32 LOS_MemIntegrityCheck(const VOID *pool);
 
+extern VOID OsMemInfoPrint(VOID *pool);
+
 #ifdef __cplusplus
 #if __cplusplus
 }
