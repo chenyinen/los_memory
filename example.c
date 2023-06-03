@@ -33,6 +33,8 @@ int main()
             p[num] = NULL;
         }
     }
+    LOS_MemFreeNodeShow((void*)buf);
     OsMemInfoPrint((void*)buf);
+    
     return 0;
 }
